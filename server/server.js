@@ -2,6 +2,7 @@ const express = require('express')
 const { chats } = require('./data/data')
 const { config } = require('dotenv')
 const cors = require('cors');
+const connectToDB = require('./config/db');
 
 
 
@@ -22,6 +23,8 @@ app.get('/api/v1/chats/:id', (req, res) => {
     console.log('anas')
     res.json(chats.find(chat => chat._id === req.params.id));
 })
+
+connectToDB()
 
 
 app.listen(port, () => console.log(`app listening on port ${port}`)) 
